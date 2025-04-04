@@ -28,7 +28,11 @@ A Gerber file stores the information for the physical production of PCB and sten
 
 ## Main board
 
+![Alt text](https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/schematic_delalomo.png?raw=true "Title")
+
 ## Breakout board
+
+![Alt text](https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/schematic_delalomo_breakout.png?raw=true "Title")
 
 Schematic
 Layout
