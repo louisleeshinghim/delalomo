@@ -6,19 +6,38 @@ What can you find in this repository?
 
 # Hardware 
 
-The schematic was drawn in EasyEDA (https://easyeda.com).
+Let's build DE-LA-LO-MO! The first step is to gather all the materials. The bill of materials (BOM) describes all the necessary parts. Most of them can be bought on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the Digikey Part Number has been included. Another convenient platform is <a href = "https://www.mouser.com/"> Mouser</a>. Just for reference, the material costs US$ 42 (~HK$ 326) in late 2024. 
 
-Main board
-Breakout board
+To get the correct parts, 
+
+DE-LA-LO-MO consists of two printed circuit boards (PCBs), a main board and a breakout board. Thus, there are two sets of files, each having a schematic, a PCB layout, and a Gerber file. The schematics and PCB layout were drawn in <a href = "https://easyeda.com"> EasyEDA Standard Version</a>. Normally, if the existing design of DE-LA-LO-MO satisfies the user requirements, the Gerber can be sent to the local PCB manufacturer. Nonetheless, if users need to modify the circuit, the following steps are recommended: 
+1. Import the schematic file in EasyEDA under a new project folder (File > Open > EasyEDA)
+2. Import the corresponding PCB layout file to the same project folder  (File > Open > EasyEDA)
+3. Make any necessary changes to the schematic and update the PCB (Alt + U)
+4. Run the design rule checker (Design > Check DRC)
+5. Export to Gerber file (Fabrication > PCB Fabrication File)
+6. Send the freshly exported Gerber file to PCB manufacturer.
+
+A Gerber file stores the information for the physical production of PCB and stencil. Nearly all PCB manufacturers accept Gerber file. Here are the PCB specifications of DE-LA-LO-MO:
+- FR4 material
+- 1.6 mm board thickness
+- HASL surface finish
+- 1 ounce copper weight
+
+## Main board
+
+## Breakout board
 
 Schematic
 Layout
 Gerber
 
+All files related to this section can be found in the folder Fabrication file.
+
 
 # Software 
 
-All programs  Legacy IDE (https://www.arduino.cc/en/software). Arduino IDE Version 1.8.X is recommended.
+All programs were written in Arduino IDE Version 1.8.X (https://www.arduino.cc/en/software). Arduino IDE Version 1.8.X is recommended, although newer IDE versions, e.g. 2.3.X, may work.
 
 
 Bootloader
