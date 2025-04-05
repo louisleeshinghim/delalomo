@@ -1,6 +1,6 @@
 # Introduction
 
-DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. The abbreviation features the first syllable of each word in the full name. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. 
+<p align="justify"> DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. </p>
 
 # Table of Contents
 - <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
@@ -12,7 +12,7 @@ DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching 
 
 # Hardware 
 
-Let's build DE-LA-LO-MO! The first step is to gather all the materials. The bill of materials (BOM) describes all the necessary parts. Most of them can be bought on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the Digikey Part Number has been included. Another convenient platform is <a href = "https://www.mouser.com/"> Mouser</a>. Just for reference, the material costs US$ 42 (~HK$ 326) in late 2024. 
+Let's gather all the materials. With a bill of materials (BOM), buying the parts is similar to grocery shopping. Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. 
 
 To get the correct parts, 
 
