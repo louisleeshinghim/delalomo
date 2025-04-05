@@ -2,7 +2,12 @@
 
 DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. The abbreviation features the first syllable of each word in the full name. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. 
 
-What can you find in this repository?
+# Table of Contents
+Hardware
+Software
+Useful links
+More about the project
+
 
 # Hardware 
 
@@ -16,9 +21,8 @@ DE-LA-LO-MO consists of two printed circuit boards (PCBs), a main board and a br
 3. Import the corresponding PCB layout file (File > Open > EasyEDA)
 4. Save the layout by choosing the same project title (File > Save > Save to Existing Project)
 5. Make any necessary changes to the schematic and update the PCB (Alt + U)
-6. Run the design rule checker (Design > Check DRC)
-7. Export to Gerber file (Fabrication > PCB Fabrication File > Generate Gerber)
-8. Send the freshly exported Gerber file to PCB manufacturer
+6. Export to Gerber file (Fabrication > PCB Fabrication File > Yes, check DRC > Generate Gerber)
+7. Send the freshly exported Gerber file to PCB manufacturer
 
 A Gerber file stores the information for the physical production of PCB and stencil. Nearly all PCB manufacturers accept Gerber file. Here are the PCB specifications of DE-LA-LO-MO:
 - FR4 material
@@ -28,23 +32,38 @@ A Gerber file stores the information for the physical production of PCB and sten
 
 ## Main board
 
+In order to reduce soldering work, the solder pads of the unused pins on ATMEGA128A were removed. Don't worry, there are still many pins to solder, and the microcontroller will not fall off. 
+
 ![Alt text](https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/schematic_delalomo.png?raw=true "Title")
 
 ## Breakout board
 
+This breakout board is simply a MicroSD holder. The schematic is similar to MicroSD module except a little modification to the MISO line. See <a href = "https://forum.arduino.cc/t/arduino-nano-enc28j60-and-sd-card-reader/1000054/5"> this post</a> and <a href = "https://forum.arduino.cc/t/solved-sd-card-randomly-stops-working/330205"> this post</a>.
+
 ![Alt text](https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/schematic_delalomo_breakout.png?raw=true "Title")
 
-Schematic
-Layout
-Gerber
+The breakout board is positioned perpendicular to the main board via a six-pin header for the power, ground, and four-wire SPI lines.
 
 All files related to this section can be found in the folder Fabrication file.
 
+## Other hardware
+
+In addition to the PCB-related parts, USB mini cable, USB to FTDI breakout, and of course a computer.
 
 # Software 
 
-All programs were written in Arduino IDE Version 1.8.X (https://www.arduino.cc/en/software). Arduino IDE Version 1.8.X is recommended, although newer IDE versions, e.g. 2.3.X, may work.
+After PCB assembly, it is time to burn the bootloader and upload the sketches.
 
+All programs were written in Arduino IDE Version 1.8.X. Download <a href = "https://www.arduino.cc/en/software"> here</a>. Arduino IDE Version 1.8.X is recommended, although newer IDE versions, e.g. 2.3.X, may work.
+
+MegaCore is a collection of codes required for the interfacing of ATMEGA128A. Check the repository <a href = "https://github.com/MCUdude/MegaCore"> here</a> if more information is needed. Connect your computer to the Internet and install it in Arduino IDE:
+1. Open Arduino IDE 
+2. Copy the following URL in Arduino IDE (File > Preferences > Additional Boards Manager URL)
+```https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json```
+3. Click Install to use MegaCore (Tools > Board > Boards Manager > MegaCore > Install)
+
+
+Arduino Libraries
 
 Bootloader
 I2C checker
