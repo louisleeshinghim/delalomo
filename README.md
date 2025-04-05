@@ -3,11 +3,12 @@
 DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. The abbreviation features the first syllable of each word in the full name. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. 
 
 # Table of Contents
-Hardware
-Software
-Useful links
-More about the project
-
+- <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
+  - <a href = "https://github.com/louisleeshinghim/delalomo#main-board"> Main board</a> <br/>
+  - <a href = "https://github.com/louisleeshinghim/delalomo#breakout-board"> Breakout board</a> <br/>
+- <a href = "https://github.com/louisleeshinghim/delalomo#software"> Software</a> <br/>
+- <a href = "https://github.com/louisleeshinghim/delalomo#useful-links"> Useful links</a> <br/>
+- <a href = "https://github.com/louisleeshinghim/delalomo#more-about-the-project"> More about the project</a> <br/>
 
 # Hardware 
 
