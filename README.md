@@ -12,7 +12,7 @@
 
 # Hardware 
 
-Let's gather all the materials. With a bill of materials (BOM), buying the parts is similar to grocery shopping. Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. 
+Let's gather all the materials based on the bill of materials (BOM). Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. 
 
 To get the correct parts, 
 
@@ -49,7 +49,10 @@ All files related to this section can be found in the folder Fabrication file.
 
 ## Other hardware
 
-In addition to the PCB-related parts, USB mini cable, USB to FTDI breakout, and of course a computer.
+In addition to the PCB-related parts, the followings are needed:
+- USB mini cable:
+- FTDI breakout: 5V-compatible
+- A computer:
 
 # Software 
 
@@ -70,6 +73,21 @@ Bootloader
 I2C checker
 RTC
 Main sketch
+
+## Libraries
+
+Arduino.h
+Streaming.h
+Wire.h
+DS3232RTC.h
+SPI.h
+SdFat.h
+SensirionI2cSht4x.h
+BMx280I2C.h
+ArtronShop_SPL06-001.h
+SparkFunMLX90614.h
+ADS1X15.h
+
 
 # Useful links
 
