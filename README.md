@@ -1,6 +1,6 @@
 # Introduction
 
-<p align="justify"> DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. </p>
+<p align="justify"> DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. Follow the steps to start building DE-LA-LO-MO</p>
 
 # Table of Contents
 - <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
@@ -12,25 +12,23 @@
 - <a href = "https://github.com/louisleeshinghim/delalomo#more-about-the-project"> More about the project</a> <br/>
 
 # Hardware 
-
 Let's gather all the materials based on the bill of materials (BOM). Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. 
 
 To get the correct parts, 
 
-DE-LA-LO-MO consists of two printed circuit boards (PCBs), a main board and a breakout board. Thus, there are two sets of files, each having a schematic, a PCB layout, and a Gerber file. The schematics and PCB layout were drawn in <a href = "https://easyeda.com"> EasyEDA Standard Version</a>. Normally, if the existing design of DE-LA-LO-MO satisfies the user requirements, the Gerber can be sent to the local PCB manufacturer. Nonetheless, if users need to modify the circuit, the following steps are recommended: 
-1. Import the schematic file in EasyEDA under a new project folder (File > Open > EasyEDA)
-2. Save the schematic with a user-defined title (File > Save > Save as New Project)
-3. Import the corresponding PCB layout file (File > Open > EasyEDA)
-4. Save the layout by choosing the same project title (File > Save > Save to Existing Project)
-5. Make any necessary changes to the schematic and update the PCB (Alt + U)
-6. Export to Gerber file (Fabrication > PCB Fabrication File > Yes, check DRC > Generate Gerber)
-7. Send the freshly exported Gerber file to PCB manufacturer
+DE-LA-LO-MO consists of two printed circuit boards (PCBs), a main board and a breakout board. Thus, there are two sets of files, each having a schematic, a PCB layout, and a Gerber file. The schematics and PCB layout were drawn and can be modified in <a href = "https://easyeda.com"> EasyEDA Standard Version</a>. Normally, the existing design of DE-LA-LO-MO can satisfy most user requirements. Users can simply send the two Gerber files to the local PCB manufacturer. 
+
+- Main board Gerber file: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_gerber.zip"> Click to download</a> </br>
+- Breakout board Gerber file: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_breakout_gerber.zip"> Click to download</a> </br>
 
 A Gerber file stores the information for the physical production of PCB and stencil. Nearly all PCB manufacturers accept Gerber file. Here are the PCB specifications of DE-LA-LO-MO:
 - FR4 material
 - 1.6 mm board thickness
 - HASL surface finish
 - 1 ounce copper weight
+
+Nonetheless, users can modify DE-LA-LO-MO according to their own needs. The steps are listed out in the <a href = "https://github.com/louisleeshinghim/delalomo/tree/main/Fabrication%20files"> Fabrication files</a> folder.
+
 
 ## Main board
 
