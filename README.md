@@ -7,6 +7,7 @@
   - <a href = "https://github.com/louisleeshinghim/delalomo#main-board"> Main board</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#breakout-board"> Breakout board</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#software"> Software</a> <br/>
+  - <a href = "https://github.com/louisleeshinghim/delalomo#libraries"> Libraries</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#useful-links"> Useful links</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#more-about-the-project"> More about the project</a> <br/>
 
@@ -76,17 +77,25 @@ Main sketch
 
 ## Libraries
 
-Arduino.h
-Streaming.h
-Wire.h
-DS3232RTC.h
-SPI.h
-SdFat.h
-SensirionI2cSht4x.h
-BMx280I2C.h
-ArtronShop_SPL06-001.h
-SparkFunMLX90614.h
-ADS1X15.h
+To install the libraries, 
+1. Open Library Manager in Arduino IDE (Tools > Manage Libraries)
+2. Search for the following libraries and click install
+- <a href = "https://github.com/RobTillaart/ADS1X15"> ADS1X15</a> </br>
+- <a href = "https://github.com/ArtronShop/ArtronShop_SPL06-001"> ArtronShop_SPL06-001</a> </br>
+- <a href = "https://github.com/christandlg/BMx280MI"> BMx280MI</a> </br>
+- <a href = "https://github.com/JChristensen/DS3232RTC"> DS3232RTC</a> </br>
+- <a href = "https://github.com/sparkfun/SparkFun_MLX90614_Arduino_Library"> SparkFun MLX90614</a> </br>
+- <a href = "https://github.com/greiman/SdFat"> SdFat</a> </br>
+- <a href = "https://github.com/Sensirion/arduino-i2c-sht4x"> Sensirion I2C SHT4x</a> </br>
+- <a href = "https://github.com/janelia-arduino/Streaming"> Streaming.h</a> </br>
+
+The following libraries do not need to be installed. They are bundled with every Arduino platform.
+- <a href = "https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h"> Arduino</a> </br>
+- <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> </br>
+- <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> </br>
+
+
+# Operation
 
 
 # Useful links
