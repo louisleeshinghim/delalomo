@@ -1,12 +1,18 @@
 # Introduction
 
-<p align="justify"> DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. Follow the steps to start building DE-LA-LO-MO</p>
+<p align="justify"> DE-LA-LO-MO is an Arduino-based datalogger. The full name is Delayable Latching Logging Module. It is a piece of free-and-open-source equipment for environmental monitoring. The target users are environmental scientists. This repository contains all the files needed for building and using DE-LA-LO-MO. The steps are as follows:</p>
+
+- Send Gerber files to local manufacturers
+- Buy and solder electronic parts and accessories
+- Install software and bootloader
+- Upload sketches and configure data-logger parameters
 
 # Table of Contents
 - <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#main-board"> Main board</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#breakout-board"> Breakout board</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#software"> Software</a> <br/>
+  - <a href = "https://github.com/louisleeshinghim/delalomo#bootloader"> Bootloader</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#libraries"> Libraries</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#useful-links"> Useful links</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#more-about-the-project"> More about the project</a> <br/>
@@ -50,28 +56,30 @@ All files related to this section can be found in the folder Fabrication file.
 
 In addition to the PCB-related parts, the followings are needed:
 - USB mini cable:
+- USB type-B cable
 - FTDI breakout: 5V-compatible
+- Six DuPont wires
 - A computer:
 
 # Software 
 
 After PCB assembly, it is time to burn the bootloader and upload the sketches.
 
-All programs were written in Arduino IDE Version 1.8.X. Download <a href = "https://www.arduino.cc/en/software"> here</a>. Arduino IDE Version 1.8.X is recommended, although newer IDE versions, e.g. 2.3.X, may work.
+All programs were written in Arduino IDE Version 1.8.X. Download <a href = "https://www.arduino.cc/en/software"> here</a>. Arduino IDE Version 1.8.X is recommended, although newer IDE versions, e.g. 2.3.X, may work. 
 
-MegaCore is a collection of codes required for the interfacing of ATMEGA128A. Check the repository <a href = "https://github.com/MCUdude/MegaCore"> here</a> if more information is needed. Connect your computer to the Internet and install it in Arduino IDE:
+## Bootloader
+
+Bootloader is a small piece of software that allows uploading of sketches onto the microcontroller. <a href = "https://github.com/MCUdude/MegaCore"> MegaCore</a> is a collection of codes required for the interfacing of ATMEGA128A. Connect your computer to the Internet and install MegaCore in Arduino IDE:
 1. Open Arduino IDE 
 2. Copy the following URL in Arduino IDE (File > Preferences > Additional Boards Manager URL)
 ```https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json```
 3. Click Install to use MegaCore (Tools > Board > Boards Manager > MegaCore > Install)
 
 
-Arduino Libraries
-
-Bootloader
-I2C checker
-RTC
-Main sketch
+Burning bootloader.
+USB
+Arduino UNO
+Six Dupont wires
 
 ## Libraries
 
@@ -100,6 +108,11 @@ The following libraries do not need to be installed. They are bundled with every
 | <a href = "https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h"> Arduino</a> | Enable the basic functions in Arduino |
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and an assortment of sensors |
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> | Communicate with SPI devices, most importantly the MicroSD |
+
+## Sketches
+I2C checker
+RTC
+Main sketch
 
 
 # Operation
