@@ -151,7 +151,7 @@ Bootloader is a small piece of software that allows uploading of sketches onto t
 ```
 https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json
 ```
-4. Click Install to use MegaCore (<i>Tools > Board > Boards Manager > MegaCore > Install</i>)
+3. Click Install to use MegaCore (<i>Tools > Board > Boards Manager > MegaCore > Install</i>)
 
 ### Pin connection
 
