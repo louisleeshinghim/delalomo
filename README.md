@@ -18,6 +18,7 @@
 - <a href = "https://github.com/louisleeshinghim/delalomo#software"> Software</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#bootloader"> Bootloader</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#libraries"> Libraries</a> <br/>
+  - <a href = "https://github.com/louisleeshinghim/delalomo#sketches"> Sketches</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#operation"> Operation</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#useful-links"> Useful links</a> <br/>
 - <a href = "https://github.com/louisleeshinghim/delalomo#more-about-the-project"> More about the project</a> <br/>
@@ -39,10 +40,9 @@
 
 ## Bill of materials
 
-<p align="justify">Let's gather the parts on the bill of materials, BOM (<a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/billofmaterials.xlsx">download here</a>). Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. To get the correct parts, please check the photographic guide in the directory Fabrication files. The following tools are needed.</p>
+<p align="justify">Let's gather the parts on the bill of materials, BOM (<a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/billofmaterials.xlsx">download here</a>). Most parts are available on <a href = "https://www.digikey.com/"> DigiKey</a>. Therefore, the BOM includes the Digikey Part Number. <a href = "https://www.mouser.com/"> Mouser</a> is also good. The parts costed US$ 42 (~HK$ 326) in late 2024. To get the correct parts, please check the photographic guide under the directory <a href = "https://github.com/louisleeshinghim/delalomo/tree/main/Fabrication%20files"> Fabrication files</a>. The following tools are needed.</p>
 
 <details>
-
 <summary>Click <b><i>here</i></b> to show the bill of materials </summary>
   
 | Item | Model number | Footprint | Quantity | 
@@ -143,23 +143,28 @@ All programs were written in Arduino IDE Version 1.8.X. Download <a href = "http
 
 ## Bootloader
 
+### Arduino core
+
 Bootloader is a small piece of software that allows uploading of sketches onto the microcontroller. <a href = "https://github.com/MCUdude/MegaCore"> MegaCore</a> is a collection of codes required for the interfacing of ATMEGA128A. Connect your computer to the Internet and install MegaCore in Arduino IDE:
 1. Open Arduino IDE 
 2. Copy the following URL in Arduino IDE (<i>File > Preferences > Additional Boards Manager URL</i>)
-```https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json```
-3. Click Install to use MegaCore (<i>Tools > Board > Boards Manager > MegaCore > Install</i>)
+```
+https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json
+```
+4. Click Install to use MegaCore (<i>Tools > Board > Boards Manager > MegaCore > Install</i>)
+
+### Pin connection
 
 <p align="justify"> Then, physical connection must be established between Arduino UNO and DE-LA-LO-MO via DuPont wires. Use high-quality DuPont wires. Broken wires often cause failure to burn bootloader. Caution should also be paid to wiring. Please follow the pin arrangement below and check the actual connection carefully. </p>
 
+- Pin 10 -> RST
+- Pin 11 -> RX
+- Pin 12 -> TX
+- Pin 13 -> SCK
+- 5V -> VCC
+- GND -> GND
 
-| Arduino UNO | DE-LA-LO-MO |
-| ----------- | ----------- |
-| Pin 10 | RST |
-| Pin 11 | RX |
-| Pin 12 | TX |
-| Pin 13 | SCK |
-| 5V | VCC |
-| GND | GND |
+### Burn bootloader
 
 <p align="justify"> We are one step away from burning the bootloader into DE-LA-LO-MO. Turn the Arduino UNO as an In-circuit Serial Programmer (ISP) in Arduino IDE. The technical details are explained in an <a href = "https://support.arduino.cc/hc/en-us/articles/4841602539164-Burn-the-bootloader-on-UNO-Mega-and-classic-Nano-using-another-Arduino"> Arduino article </a>. However, for simplicity the following steps are used for DE-LA-LO-MO: </p>
 
@@ -178,9 +183,11 @@ Bootloader is a small piece of software that allows uploading of sketches onto t
 9. BURN the bootloader! (<i>Tools > Burn Bootloader</i>)
 10. Wait for the dialog <b>Done burning bootloader</b>
 
+
+
 ## Libraries
 
-To install the libraries, please open Library Manager in Arduino IDE (Tools > Manage Libraries). Then, search for the following libraries and click install.
+To install Arduino libraries, the preferred method is through Arduino IDE's Library Manager (<i>Tools > Manage Libraries</i>). Then, search for the libraries and click install. To install the libraries in this way, Internet connection is a prerequisite. The second method is to install libraries as downloaded zipped folders (<i>Sketch > Include Library > Add .ZIP Library</i>). Install the following libraries support the basic functions of DE-LA-LO-MO.
 
 | Library | Description |
 | ------- | ----------- |
@@ -189,8 +196,7 @@ To install the libraries, please open Library Manager in Arduino IDE (Tools > Ma
 | <a href = "https://github.com/greiman/SdFat"> SdFat</a> | Read the text files on and save data to MicroSD |
 | <a href = "https://github.com/janelia-arduino/Streaming"> Streaming</a> | Recognise the text in the .txt files on MicroSD |
 
-
-Communications are made over the I2C interface. 
+Arduino libraries for different sensors are required to interface the sensors to DE-LA-LO-MO. At this moment, only microclimate sensors are involved. Communications are made over the I2C interface. Some sensor libraries are provided by the sensor manufacturers. The codes in the main sketch may require modification if libraries are updated. 
 
 | Library | Description |
 | ------- | ----------- |
@@ -199,20 +205,222 @@ Communications are made over the I2C interface.
 | <a href = "https://github.com/sparkfun/SparkFun_MLX90614_Arduino_Library"> SparkFun MLX90614</a> | Read non-contact surface temperature from Melexis MLX90614 |
 | <a href = "https://github.com/Sensirion/arduino-i2c-sht4x"> Sensirion I2C SHT4x</a> | Read air temperature & relative humidity from Sensirion SHT4X family sensors |
 
-The following libraries do not need to be installed. They are bundled with every Arduino platform. Still, they have to be included at the beginning of the sketch.
+The following libraries do not need to be installed. They are bundled with every Arduino platform. Still, they have to be included at the beginning of the sketch. For DE-LA-LO-MO, the library <i>Wire</i> is important for communicating sensors, and <i>SPI</i> for MicroSD. Currently, no sensors are communicated to over the SPI interface.
+
 | Library | Description |
 | ------- | ----------- |
 | <a href = "https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h"> Arduino</a> | Enable the basic functions in Arduino |
-| <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and an assortment of sensors |
+| <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and I2C sensors |
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> | Communicate with SPI devices, most importantly the MicroSD |
 
 ## Sketches
-I2C checker
-RTC
 
-Main sketch - Serial display
+### Uploading a sketch
 
-Main sketch - Local data storage
+A sketch is a programme that is run by the microcontroller. Four sketches are used. The sketches are very long. Please click on the collapsed sections to expand the code blocks. Copy the whole sketch using the button on the top right and paste into Arduino IDE. 
+
+
+Do not reverse the pins.
+
+### I2C scanner
+
+<p align="justify"> This sketch scans I2C devices by showing the address of discovered devices. Users can find DS3231SN (<i>0x68</i>), TCA9548A (<i>0x70</i>), ADS1115 (<i>0x4B</i>) on a DE-LA-LO-MO. If undetected, possible reasons may be faulty chip or bad soldering. This sketch is actually an adapter version of the I2C scanner from the <i>Wire</i> library. </p>
+
+<details>
+<summary>Click <b><i>here</i></b> to show the codes of the I2C scanner </summary>
+
+```
+#include <Wire.h>
+
+
+void setup()
+{
+  pinMode(14, OUTPUT); digitalWrite(14, LOW);                                                     // Turn on i2C
+  pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                                    // Turn on LED
+  Wire.begin();
+  Serial.begin(9600);
+  Serial.println("\nI2C Scanner");
+}
+
+
+void loop()
+{
+  byte error, address;
+  int nDevices;
+  Serial.println("Scanning...");
+  nDevices = 0;
+  for(address = 1; address < 127; address++ )
+  {
+    // The i2c_scanner uses the return value of
+    // the Write.endTransmisstion to see if
+    // a device did acknowledge to the address.
+    Wire.beginTransmission(address);
+    error = Wire.endTransmission();
+
+    if (error == 0)
+    {
+      Serial.print("I2C device found at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.print(address,HEX);
+      Serial.println("  !");
+      nDevices++;
+    }
+    else if (error==4)
+    {
+      Serial.print("Unknown error at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.println(address,HEX);
+    }
+  }
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
+  else
+    Serial.println("done\n");
+
+  delay(2000);           // wait 2 seconds for next scan
+}
+```
+</details>
+
+
+### RTC setter 
+
+<details>
+<summary>Click <b><i>here</i></b> to show the codes of the RTC scanner </summary>
+
+```
+// Arduino DS3232RTC Library (https://github.com/JChristensen/DS3232RTC)
+// Copyright (C) 2018 by Jack Christensen and licensed under
+// GNU GPL v3.0, https://www.gnu.org/licenses/gpl.html
+//
+// Example sketch to display the date and time from a DS3231 or DS3232 RTC every second.
+// Display the temperature once per minute. 
+// The DS3231 does a temperature conversion once every 64 seconds.)
+//
+// Set the date and time by entering the following on the Arduino serial monitor:
+//  year,month,day,hour,minute,second,
+//
+// Where
+//  year can be two or four digits,
+//  month is 1-12,
+//  day is 1-31,
+//  hour is 0-23, and
+//  minute and second are 0-59.
+//
+// Entering the final comma delimiter (after "second") will avoid a
+// one-second timeout and will allow the RTC to be set more accurately.
+//
+// No validity checking is done, invalid values or incomplete syntax
+// in the input will result in an incorrect RTC setting.
+// Jack Christensen 08Aug2013
+
+#include <DS3232RTC.h>      // https://github.com/JChristensen/DS3232RTC
+#include <Streaming.h>      // https://github.com/janelia-arduino/Streaming
+#include <Wire.h>
+DS3232RTC myRTC;
+
+void setup()
+{
+    pinMode(14, OUTPUT); digitalWrite(14, LOW);                                                     // Turn on i2C
+    pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                                    // Turn on LED
+    Wire.begin();
+
+    Serial.begin(9600);
+    Serial << F( "\n" __FILE__ "\n" __DATE__ " " __TIME__ "\n" );
+    myRTC.begin();
+
+    // setSyncProvider() causes the Time library to synchronize with the
+    // external RTC by calling RTC.get() every five minutes by default.
+    setSyncProvider(myRTC.get);
+    Serial << F("RTC Sync");
+    if (timeStatus() != timeSet) Serial << F(" FAIL!");
+    Serial << endl;
+}
+
+void loop()
+{
+    static time_t tLast;
+    time_t t;
+    tmElements_t tm;
+
+    // check for input to set the RTC, minimum length is 12, i.e. yy,m,d,h,m,s
+    if (Serial.available() >= 12) {
+        // note that the tmElements_t Year member is an offset from 1970,
+        // but the RTC wants the last two digits of the calendar year.
+        // use the convenience macros from the Time Library to do the conversions.
+        int y = Serial.parseInt();
+        if (y >= 100 && y < 1000)
+            Serial << F("Error: Year must be two digits or four digits!") << endl;
+        else {
+            if (y >= 1000)
+                tm.Year = CalendarYrToTm(y);
+            else    // (y < 100)
+                tm.Year = y2kYearToTm(y);
+            tm.Month = Serial.parseInt();
+            tm.Day = Serial.parseInt();
+            tm.Hour = Serial.parseInt();
+            tm.Minute = Serial.parseInt();
+            tm.Second = Serial.parseInt();
+            t = makeTime(tm);
+            myRTC.set(t);   // use the time_t value to ensure correct weekday is set
+            setTime(t);
+            Serial << F("RTC set to: ");
+            printDateTime(t);
+            Serial << endl;
+            // dump any extraneous input
+            while (Serial.available() > 0) Serial.read();
+        }
+    }
+
+    t = now();
+    if (t != tLast) {
+        tLast = t;
+        printDateTime(t);
+        if (second(t) == 0) {
+            float c = myRTC.temperature() / 4.;
+            float f = c * 9. / 5. + 32.;
+            Serial << F("  ") << c << F(" C  ") << f << F(" F");
+        }
+        Serial << endl;
+    }
+}
+
+// print date and time to Serial
+void printDateTime(time_t t)
+{
+    printDate(t); Serial << ' '; printTime(t);
+}
+
+// print time to Serial
+void printTime(time_t t)
+{
+    printI00(hour(t), ':'); printI00(minute(t), ':'); printI00(second(t), ' ');
+}
+
+// print date to Serial
+void printDate(time_t t)
+{
+    printI00(day(t), 0);
+    Serial << monthShortStr(month(t)) << _DEC(year(t));
+}
+
+// Print an integer in "00" format (with leading zero),
+// followed by a delimiter character to Serial.
+// Input value assumed to be between 0 and 99.
+void printI00(int val, char delim)
+{
+    if (val < 10) Serial << '0'; Serial << _DEC(val);
+    if (delim > 0) Serial << delim; return;
+}
+```
+</details>
+
+
+### Main sketch - Serial display
+
+### Main sketch - Local data storage
 
 
 # Operation
