@@ -75,22 +75,31 @@ Main sketch
 
 ## Libraries
 
-To install the libraries, 
-1. Open Library Manager in Arduino IDE (Tools > Manage Libraries)
-2. Search for the following libraries and click install
-- <a href = "https://github.com/RobTillaart/ADS1X15"> ADS1X15</a> </br>
-- <a href = "https://github.com/ArtronShop/ArtronShop_SPL06-001"> ArtronShop_SPL06-001</a> </br>
-- <a href = "https://github.com/christandlg/BMx280MI"> BMx280MI</a> </br>
-- <a href = "https://github.com/JChristensen/DS3232RTC"> DS3232RTC</a> </br>
-- <a href = "https://github.com/sparkfun/SparkFun_MLX90614_Arduino_Library"> SparkFun MLX90614</a> </br>
-- <a href = "https://github.com/greiman/SdFat"> SdFat</a> </br>
-- <a href = "https://github.com/Sensirion/arduino-i2c-sht4x"> Sensirion I2C SHT4x</a> </br>
-- <a href = "https://github.com/janelia-arduino/Streaming"> Streaming.h</a> </br>
+To install the libraries, please open Library Manager in Arduino IDE (Tools > Manage Libraries). Then, search for the following libraries and click install.
 
-The following libraries do not need to be installed. They are bundled with every Arduino platform.
-- <a href = "https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h"> Arduino</a> </br>
-- <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> </br>
-- <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> </br>
+| Library | Description |
+| ------- | ----------- |
+| <a href = "https://github.com/RobTillaart/ADS1X15"> ADS1X15</a> | Read analog voltage on ADS1115 channel after channel |
+| <a href = "https://github.com/JChristensen/DS3232RTC"> DS3232RTC</a> | Request current time and set alarm for data-logging events |
+| <a href = "https://github.com/greiman/SdFat"> SdFat</a> | Read the text files on and save data to MicroSD |
+| <a href = "https://github.com/janelia-arduino/Streaming"> Streaming</a> | Recognise the text in the .txt files on MicroSD |
+
+
+Communications are made over the I2C interface. 
+
+| Library | Description |
+| ------- | ----------- |
+| <a href = "https://github.com/ArtronShop/ArtronShop_SPL06-001"> ArtronShop_SPL06-001</a> | Read barometric pressure from Goertek SPL06-001 |
+| <a href = "https://github.com/christandlg/BMx280MI"> BMx280MI</a> | Read barometric pressure from Bosch BMP280 |
+| <a href = "https://github.com/sparkfun/SparkFun_MLX90614_Arduino_Library"> SparkFun MLX90614</a> | Read non-contact surface temperature from Melexis MLX90614 |
+| <a href = "https://github.com/Sensirion/arduino-i2c-sht4x"> Sensirion I2C SHT4x</a> | Read air temperature & relative humidity from Sensirion SHT4X family sensors |
+
+The following libraries do not need to be installed. They are bundled with every Arduino platform. Still, they have to be included at the beginning of the sketch.
+| Library | Description |
+| ------- | ----------- |
+| <a href = "https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h"> Arduino</a> | Enable the basic functions in Arduino |
+| <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and an assortment of sensors |
+| <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> | Communicate with SPI devices, most importantly the MicroSD |
 
 
 # Operation
