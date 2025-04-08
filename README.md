@@ -141,7 +141,8 @@ In addition to the PCB-related parts, the followings are needed:
 - Six DuPont wires
 - A computer:
 
-<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
+
+[Back to the top](#Introduction)
 
 # Software 
 
