@@ -8,6 +8,8 @@
 - Install software and bootloader
 - Upload sketches and configure data-logger parameters
 
+[Software](#software)
+
 # Table of Contents
 - <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#tools"> Tools</a> <br/>
