@@ -8,17 +8,20 @@
 - Install software and bootloader
 - Upload sketches and configure data-logger parameters
 
-- [Hardware](#hardware)
-- [Software](#software)
+
+
+
+
+
 
 # Table of Contents
-- <a href = "https://github.com/louisleeshinghim/delalomo#hardware"> Hardware</a> <br/>
+- [Hardware](#hardware)
   - <a href = "https://github.com/louisleeshinghim/delalomo#tools"> Tools</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#bill-of-materials"> Bill of materials</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#main-board"> Main board</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#breakout-board"> Breakout board</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#other-hardware"> Other hardware</a> <br/>
-- <a href = "https://github.com/louisleeshinghim/delalomo#software"> Software</a> <br/>
+- [Software](#software)
   - <a href = "https://github.com/louisleeshinghim/delalomo#bootloader"> Bootloader</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#libraries"> Libraries</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#sketches"> Sketches</a> <br/>
