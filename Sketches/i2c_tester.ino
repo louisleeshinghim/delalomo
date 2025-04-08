@@ -4,8 +4,8 @@
 
 void setup()
 {
-  pinMode(14, OUTPUT); digitalWrite(14, LOW);                                                     // Turn on i2C
-  pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                                    // Turn on LED
+  pinMode(14, OUTPUT); digitalWrite(14, LOW);                                           // Turn on i2C
+  pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                          // Turn on LED
   Wire.begin();
   Serial.begin(9600);
   Serial.println("\nI2C Scanner");
