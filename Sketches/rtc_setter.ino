@@ -9,7 +9,7 @@
 // Set the date and time by entering the following on the Arduino serial monitor:
 //  year,month,day,hour,minute,second,
 //
-// Where
+//  where
 //  year can be two or four digits,
 //  month is 1-12,
 //  day is 1-31,
