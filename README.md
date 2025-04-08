@@ -94,8 +94,8 @@
 
 DE-LA-LO-MO consists of two printed circuit boards (PCBs), a main board and a breakout board. Thus, there are two sets of files, each having a schematic, a PCB layout, and a Gerber file. The schematics and PCB layout were drawn and can be modified in <a href = "https://easyeda.com"> EasyEDA Standard Version</a>. Normally, the existing design of DE-LA-LO-MO can satisfy most user requirements. Users can simply send the two Gerber files to the local PCB manufacturer. 
 
-- Main board Gerber file: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_gerber.zip"> Click to download</a> </br>
-- Breakout board Gerber file: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_breakout_gerber.zip"> Click to download</a> </br>
+- Main board: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_gerber.zip"> Click to download</a> </br>
+- Breakout board: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Fabrication%20files/delalomo_breakout_gerber.zip"> Click to download</a> </br>
 
 A Gerber file stores the information for the physical production of PCB and stencil. Nearly all PCB manufacturers accept Gerber file. Here are the PCB specifications of DE-LA-LO-MO:
 - FR4 material
@@ -135,6 +135,8 @@ In addition to the PCB-related parts, the followings are needed:
 - Six DuPont wires
 - A computer:
 
+<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
+
 # Software 
 
 After PCB assembly, it is time to burn the bootloader and upload the sketches.
@@ -166,13 +168,13 @@ https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json
 
 ### Burn bootloader
 
-<p align="justify"> We are one step away from burning the bootloader into DE-LA-LO-MO. Turn the Arduino UNO as an In-circuit Serial Programmer (ISP) in Arduino IDE. The technical details are explained in an <a href = "https://support.arduino.cc/hc/en-us/articles/4841602539164-Burn-the-bootloader-on-UNO-Mega-and-classic-Nano-using-another-Arduino"> Arduino article </a>. However, for simplicity the following steps are used for DE-LA-LO-MO: </p>
+<p align="justify"> We are one step away from burning the bootloader into DE-LA-LO-MO. Turn the Arduino UNO as an In-circuit Serial Programmer (ISP) in Arduino IDE. The technical details are explained in an <a href = "https://support.arduino.cc/hc/en-us/articles/4841602539164-Burn-the-bootloader-on-UNO-Mega-and-classic-Nano-using-another-Arduino"> Arduino article</a>. However, for simplicity the following steps are used for DE-LA-LO-MO: </p>
 
 1. Connect the Arduino UNO board to computer with USB type-B cable
 2. Select the correct board (<i>Tools > Board > Arduino AVR Boards > Arduino Uno</i>)
 3. Select the engaged COM port in Arduino IDE (<i>Tools > Port</i>)
 4. Open the sketch (<i>File > Examples > 11.ArduinoISP > ArduinoISP</i>)
-5. Upload the opened sketch to Arduino UNO (<i>Ctrl + U</i>) 
+5. Upload the opened sketch to Arduino UNO (<i>```Ctrl``` + ```U```</i>) 
 6. Turn Arduino UNO into a programmer (<i>Tools > Programmer > Arduino as ISP</i>)
 7. Select microcontroller to be burnt (<i>Tools > Board > MegaCore > ATMEGA128 </i>)
 8. Select under the <i>Tools</i> dropdown menu:
@@ -213,215 +215,67 @@ The following libraries do not need to be installed. They are bundled with every
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and I2C sensors |
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> | Communicate with SPI devices, most importantly the MicroSD |
 
+<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
+
 ## Sketches
 
 ### Uploading a sketch
 
-A sketch is a programme that is run by the microcontroller. Four sketches are used. The sketches are very long. Please click on the collapsed sections to expand the code blocks. Copy the whole sketch using the button on the top right and paste into Arduino IDE. 
+A sketch is a programme run by the microcontroller. Four sketches are used. Please download their <i>.ino</i> files and open in Arduino IDE. 
 
+- I2C scanner: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/i2c_scanner.ino"> Click to download</a>
+- RTC setter: <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/rtc_setter.ino"> Click to download</a>
+- Main sketch (Serial display): <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/main_sketch_serial.ino"> Click to download</a>
+- Main sketch (MicroSD storage): <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/main_sketch_microsd.ino"> Click to download</a>
 
-Do not reverse the pins.
+It is recommended to download the above sketches to the same directory. First, run the I2C scanner to check the on-board devices. Then, set the RTC time. If users wish to quickly display sensor readouts on different channel, the main sketch with serial display will help. Ultimately, when DE-LA-LO-MO is ready to be deployed, upload the main sketch with MicroSD data storage. 
+
+1. Set the FTDI breakout to 5V and connect it to the USB mini cable linking to the computer
+2. Carefully match the FTDI breakout pins with the 1×6 pin header silkscreen and plug it in
+3. Open the downloaded Arduino sketch in Arduino IDE (<i>```Ctrl``` + ```O```</i>)
+4. Compile and upload the Arduino sketch (<i>```Ctrl``` + ```U```</i>) 
+
+### Serial monitor
+
+The I2C scanner, RTC setter, and the main sketch with serial output utilise the serial monitor in Arduino IDE. Serial monitor displays data on the computer screen. For simplicity, baud rate is uniformly set to 9600. Set up the serial monitor by these steps:
+1. Select the connected port in Arduino IDE (<i>Tools > Port</i>)
+2. Open the serial monitor in Arduino IDE (<i>```Ctrl``` + ```Shift``` + ```M```</i>)
+3. Set the baud rate to <i>9600 baud</i> on the bottom right
+4. If nothing shows, re-open the serial monitor
 
 ### I2C scanner
 
 <p align="justify"> This sketch scans I2C devices by showing the address of discovered devices. Users can find DS3231SN (<i>0x68</i>), TCA9548A (<i>0x70</i>), ADS1115 (<i>0x4B</i>) on a DE-LA-LO-MO. If undetected, possible reasons may be faulty chip or bad soldering. This sketch is actually an adapter version of the I2C scanner from the <i>Wire</i> library. </p>
 
-<details>
-<summary>Click <b><i>here</i></b> to show the codes of the I2C scanner </summary>
-
-```
-#include <Wire.h>
-
-
-void setup()
-{
-  pinMode(14, OUTPUT); digitalWrite(14, LOW);                                                     // Turn on i2C
-  pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                                    // Turn on LED
-  Wire.begin();
-  Serial.begin(9600);
-  Serial.println("\nI2C Scanner");
-}
-
-
-void loop()
-{
-  byte error, address;
-  int nDevices;
-  Serial.println("Scanning...");
-  nDevices = 0;
-  for(address = 1; address < 127; address++ )
-  {
-    // The i2c_scanner uses the return value of
-    // the Write.endTransmisstion to see if
-    // a device did acknowledge to the address.
-    Wire.beginTransmission(address);
-    error = Wire.endTransmission();
-
-    if (error == 0)
-    {
-      Serial.print("I2C device found at address 0x");
-      if (address<16)
-        Serial.print("0");
-      Serial.print(address,HEX);
-      Serial.println("  !");
-      nDevices++;
-    }
-    else if (error==4)
-    {
-      Serial.print("Unknown error at address 0x");
-      if (address<16)
-        Serial.print("0");
-      Serial.println(address,HEX);
-    }
-  }
-  if (nDevices == 0)
-    Serial.println("No I2C devices found\n");
-  else
-    Serial.println("done\n");
-
-  delay(2000);           // wait 2 seconds for next scan
-}
-```
-</details>
-
+Click <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/i2c_scanner.ino"> here</a> to download the I2C scanner sketch
 
 ### RTC setter 
 
-<details>
-<summary>Click <b><i>here</i></b> to show the codes of the RTC scanner </summary>
+1. Open Arduino IDE and upload the <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/rtc_setter.ino"> RTC setter</a> sketch (<i>```Ctrl``` +  ```U```</i>)
+2. Open serial monitor (<i>```Ctrl``` + ```Shift``` + ```M```</i>)
+3. Enter current time in this format: <b>yyyy,mm,dd,hh,mm,ss,</b>
 
-```
-// Arduino DS3232RTC Library (https://github.com/JChristensen/DS3232RTC)
-// Copyright (C) 2018 by Jack Christensen and licensed under
-// GNU GPL v3.0, https://www.gnu.org/licenses/gpl.html
-//
-// Example sketch to display the date and time from a DS3231 or DS3232 RTC every second.
-// Display the temperature once per minute. 
-// The DS3231 does a temperature conversion once every 64 seconds.)
-//
-// Set the date and time by entering the following on the Arduino serial monitor:
-//  year,month,day,hour,minute,second,
-//
-// Where
-//  year can be two or four digits,
-//  month is 1-12,
-//  day is 1-31,
-//  hour is 0-23, and
-//  minute and second are 0-59.
-//
-// Entering the final comma delimiter (after "second") will avoid a
-// one-second timeout and will allow the RTC to be set more accurately.
-//
-// No validity checking is done, invalid values or incomplete syntax
-// in the input will result in an incorrect RTC setting.
-// Jack Christensen 08Aug2013
+For example, to set the time to 2:45:50 pm on 28th August 2025. Please input <b>2025,08,28,14,45,50,</b> into the serial monitor.
 
-#include <DS3232RTC.h>      // https://github.com/JChristensen/DS3232RTC
-#include <Streaming.h>      // https://github.com/janelia-arduino/Streaming
-#include <Wire.h>
-DS3232RTC myRTC;
-
-void setup()
-{
-    pinMode(14, OUTPUT); digitalWrite(14, LOW);                                                     // Turn on i2C
-    pinMode(42, OUTPUT); digitalWrite(42, HIGH);                                                    // Turn on LED
-    Wire.begin();
-
-    Serial.begin(9600);
-    Serial << F( "\n" __FILE__ "\n" __DATE__ " " __TIME__ "\n" );
-    myRTC.begin();
-
-    // setSyncProvider() causes the Time library to synchronize with the
-    // external RTC by calling RTC.get() every five minutes by default.
-    setSyncProvider(myRTC.get);
-    Serial << F("RTC Sync");
-    if (timeStatus() != timeSet) Serial << F(" FAIL!");
-    Serial << endl;
-}
-
-void loop()
-{
-    static time_t tLast;
-    time_t t;
-    tmElements_t tm;
-
-    // check for input to set the RTC, minimum length is 12, i.e. yy,m,d,h,m,s
-    if (Serial.available() >= 12) {
-        // note that the tmElements_t Year member is an offset from 1970,
-        // but the RTC wants the last two digits of the calendar year.
-        // use the convenience macros from the Time Library to do the conversions.
-        int y = Serial.parseInt();
-        if (y >= 100 && y < 1000)
-            Serial << F("Error: Year must be two digits or four digits!") << endl;
-        else {
-            if (y >= 1000)
-                tm.Year = CalendarYrToTm(y);
-            else    // (y < 100)
-                tm.Year = y2kYearToTm(y);
-            tm.Month = Serial.parseInt();
-            tm.Day = Serial.parseInt();
-            tm.Hour = Serial.parseInt();
-            tm.Minute = Serial.parseInt();
-            tm.Second = Serial.parseInt();
-            t = makeTime(tm);
-            myRTC.set(t);   // use the time_t value to ensure correct weekday is set
-            setTime(t);
-            Serial << F("RTC set to: ");
-            printDateTime(t);
-            Serial << endl;
-            // dump any extraneous input
-            while (Serial.available() > 0) Serial.read();
-        }
-    }
-
-    t = now();
-    if (t != tLast) {
-        tLast = t;
-        printDateTime(t);
-        if (second(t) == 0) {
-            float c = myRTC.temperature() / 4.;
-            float f = c * 9. / 5. + 32.;
-            Serial << F("  ") << c << F(" C  ") << f << F(" F");
-        }
-        Serial << endl;
-    }
-}
-
-// print date and time to Serial
-void printDateTime(time_t t)
-{
-    printDate(t); Serial << ' '; printTime(t);
-}
-
-// print time to Serial
-void printTime(time_t t)
-{
-    printI00(hour(t), ':'); printI00(minute(t), ':'); printI00(second(t), ' ');
-}
-
-// print date to Serial
-void printDate(time_t t)
-{
-    printI00(day(t), 0);
-    Serial << monthShortStr(month(t)) << _DEC(year(t));
-}
-
-// Print an integer in "00" format (with leading zero),
-// followed by a delimiter character to Serial.
-// Input value assumed to be between 0 and 99.
-void printI00(int val, char delim)
-{
-    if (val < 10) Serial << '0'; Serial << _DEC(val);
-    if (delim > 0) Serial << delim; return;
-}
-```
-</details>
-
+Click 
 
 ### Main sketch - Serial display
 
+1. Open the directory of the MicroSD
+2. Input an integer in <i>sampfreq.txt</i> to specify the logging interval in seconds
+3. Input the date and time of the desired start of the data-logging cycle in <i>firstlog.txt</i>
+4. Save the files and insert the MicroSD into DE-LA-LO-MO
+5. Open Arduino IDE and upload the <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/main_sketch_serial.ino"> the main sketch with serial display</a> (<i>```Ctrl``` +  ```U```</i>)
+6. Open serial monitor after uploading (<i>```Ctrl``` + ```Shift``` + ```M```</i>)
+
 ### Main sketch - Local data storage
 
+In the 
+
+Click <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/main_sketch_microsd.ino"> here</a> to download the main sketch with MicroSD data storage
+
+
+<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
 
 # Operation
 
