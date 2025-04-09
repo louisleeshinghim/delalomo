@@ -16,7 +16,7 @@
 
 # Table of Contents
 - [Hardware](#hardware)
-  - <a href = "https://github.com/louisleeshinghim/delalomo#tools"> Tools</a> <br/>
+  - [Tools](#Tools)
   - <a href = "https://github.com/louisleeshinghim/delalomo#bill-of-materials"> Bill of materials</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#main-board"> Main board</a> <br/>
   - <a href = "https://github.com/louisleeshinghim/delalomo#breakout-board"> Breakout board</a> <br/>
@@ -222,7 +222,7 @@ The following libraries do not need to be installed. They are bundled with every
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"> Wire</a> | Communicate with I2C devices, namely DS3231, ADS1115, TCA9548A, and I2C sensors |
 | <a href = "https://docs.arduino.cc/language-reference/en/functions/communication/SPI/"> SPI</a> | Communicate with SPI devices, most importantly the MicroSD |
 
-<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
+[Back to the top](#Introduction)
 
 ## Sketches
 
@@ -264,7 +264,7 @@ Click <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches
 
 For example, to set the time to 2:45:50 pm on 28th August 2025. Please input <b>2025,08,28,14,45,50,</b> into the serial monitor.
 
-Click 
+
 
 ### Main sketch - Serial display
 
@@ -282,7 +282,7 @@ In the
 Click <a href = "https://github.com/louisleeshinghim/delalomo/blob/main/Sketches/main_sketch_microsd.ino"> here</a> to download the main sketch with MicroSD data storage
 
 
-<a href = "https://github.com/louisleeshinghim/delalomo"> Back to the top</a>
+[Back to the top](#Introduction)
 
 # Operation
 
